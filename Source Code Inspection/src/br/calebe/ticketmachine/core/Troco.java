@@ -13,32 +13,32 @@ class Troco {
     public Troco(int valor) {
         papeisMoeda = new PapelMoeda[6];
         int count = 0;
-        while (valor % 100 != 0) {
+        while (valor % 100 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[5] = new PapelMoeda(100, count);
         count = 0;
-        while (valor % 50 != 0) {
+        while (valor % 50 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[4] = new PapelMoeda(50, count);
         count = 0;
-        while (valor % 20 != 0) {
+        while (valor % 20 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[3] = new PapelMoeda(20, count);
         count = 0;
-        while (valor % 10 != 0) {
+        while (valor % 10 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[2] = new PapelMoeda(10, count);
         count = 0;
-        while (valor % 5 != 0) {
+        while (valor % 5 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[1] = new PapelMoeda(5, count);
         count = 0;
-        while (valor % 2 != 0) {
+        while (valor % 2 != 0) { /* Erro de comissão e desempenho, pois a variável valor nunca muda, fazendo um looping infinito causando um grande problema de desempenho*/
             count++;
         }
         papeisMoeda[1] = new PapelMoeda(2, count);
@@ -58,7 +58,7 @@ class Troco {
 
         @Override
         public boolean hasNext() {
-            for (int i = 6; i >= 0; i++) {
+            for (int i = 6; i >= 0; i++) { /*Erro de inicialização e de Dados, o array papeisMoeda, possui tamanho 6,o indice i utilizado começa com 6, ou seja, ele tentará acessar posições fora do array*/
                 if (troco.papeisMoeda[i] != null) {
                     return true;
                 }
@@ -69,8 +69,8 @@ class Troco {
         @Override
         public PapelMoeda next() {
             PapelMoeda ret = null;
-            for (int i = 6; i >= 0 && ret != null; i++) {
-                if (troco.papeisMoeda[i] != null) {
+            for (int i = 6; i >= 0 && ret != null; i++) { /*Erro de comissão e de controle, a variável ret será sempre null, logo a verificação de ret!= null, nunca ocorrerá, fazendo com que o desvio condicional seja utilizado de forma incorreta*/
+                if (troco.papeisMoeda[i] != null) { 
                     ret = troco.papeisMoeda[i];
                     troco.papeisMoeda[i] = null;
                 }
@@ -79,7 +79,7 @@ class Troco {
         }
 
         @Override
-        public void remove() {
+        public void remove() { /*Erro de comissão, pois o método remove não está realizando nenhuma alteração, ou seja, não está executando uma lógica de remoção de fato*/
             next();
         }
     }

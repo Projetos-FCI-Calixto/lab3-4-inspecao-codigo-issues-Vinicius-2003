@@ -22,7 +22,7 @@ public class TicketMachine {
     public void inserir(int quantia) throws PapelMoedaInvalidaException {
         boolean achou = false;
         for (int i = 0; i < papelMoeda.length && !achou; i++) {
-            if (papelMoeda[1] == quantia) {
+            if (papelMoeda[1] == quantia) { /*Erro de Comissão, Controle e Dados, pois embora haja a estrutura de verificação ela está implementada incorretamente, visto que apenas a condição verificará somente a posição 2 do array*/
                 achou = true;
             }
         }
@@ -36,7 +36,7 @@ public class TicketMachine {
         return saldo;
     }
 
-    public Iterator<Integer> getTroco() {
+    public Iterator<Integer> getTroco() { /*Erro de Omissão, visto que espare-se do método que retorne o troco, porém foi implementado um retorno null, não executando a lógica corretamente*/
         return null;
     }
 
